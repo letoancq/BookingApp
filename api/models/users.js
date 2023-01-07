@@ -1,17 +1,26 @@
-import expess from "express";
+import mongoose from "mongoose";
+const Schema = mongoose.Schema;
 
-const router = expess.Router();
+const UserSchema = new Schema({
+  username: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  password: {
+    type: String,
+    required: true,
+  },
 
-//Create
-router.post("/", (req,res) => {
-    
-})
-//update
+  isAdmin: {
+    type: Boolean,
+    default: false,
+  },
+},{timestamps: true});
 
-//delete
-
-//GET
-
-//GETALL
-
-export default router;
+export default mongoose.model("User", UserSchema);
