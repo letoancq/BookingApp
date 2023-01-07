@@ -33,6 +33,17 @@ app.use("/api/users", usersRoute);
 app.use("/api/hotels", hotelsRoute);
 app.use("/api/rooms", roomsRoute);
 
+app.use((err, req, res, next) => {
+  const errorStatus = err.status || 500;
+  const errMsg = err.message || "Something went wrong";
+  return res.status(errorStatus).json({
+    success: false,
+    status: errorStatus,
+    message: errMsg,
+    stack: err.stack,
+  });
+});
+
 app.listen(8000, () => {
   connect();
   console.log("Connecting to BE");
