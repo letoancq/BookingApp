@@ -1,5 +1,5 @@
 import expess from "express";
-import { countByCity, createHotel, deleteHotel, getAllHotel, getHotel, updateHotel } from "../controllers/hotels.js";
+import { countByCity, countByType, createHotel, deleteHotel, getAllHotel, getHotel, updateHotel } from "../controllers/hotels.js";
 import { verifyAdmin } from "../util/verifyToken.js";
 
 const router = expess.Router();
@@ -16,6 +16,6 @@ router.get("/find:id", getHotel);
 router.get("/", getAllHotel);
 
 router.get("/countByCity", countByCity);
-router.get("/countByType", getHotel);
+router.get("/countByType", countByType);
 
 export default router;
