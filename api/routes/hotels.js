@@ -1,5 +1,5 @@
 import expess from "express";
-import { createHotel, deleteHotel, getAllHotel, getHotel, updateHotel } from "../controllers/hotels.js";
+import { countByCity, createHotel, deleteHotel, getAllHotel, getHotel, updateHotel } from "../controllers/hotels.js";
 import { verifyAdmin } from "../util/verifyToken.js";
 
 const router = expess.Router();
@@ -11,8 +11,11 @@ router.put("/:id",verifyAdmin, updateHotel);
 //delete
 router.delete("/:id",verifyAdmin, deleteHotel);
 //GET
-router.get("/:id", getHotel);
+router.get("/find:id", getHotel);
 //GETALL
 router.get("/", getAllHotel);
+
+router.get("/countByCity", countByCity);
+router.get("/countByType", getHotel);
 
 export default router;
