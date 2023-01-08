@@ -1,7 +1,26 @@
-import expess from "express";
+import mongoose from "mongoose";
+const Schema = mongoose.Schema;
 
-const router = expess.Router();
+const RoomSchema = new Schema(
+  {
+    title: {
+      type: String,
+      required: true,
+    },
+    price: {
+      type: Number,
+      required: true,
+    },
+    desc: {
+      type: String,
+      required: true,
+    },
+
+    roomNumbers: [{ number: Number, unavailableDates: { type: [Date] } }],
+  },
+  { timestamps: true }
+);
 
 
 
-export default router;
+export default mongoose.model("Room", RoomSchema);
