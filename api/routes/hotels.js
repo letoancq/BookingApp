@@ -1,14 +1,15 @@
 import expess from "express";
 import { createHotel, deleteHotel, getAllHotel, getHotel, updateHotel } from "../controllers/hotels.js";
+import { verifyAdmin } from "../util/verifyToken.js";
 
 const router = expess.Router();
 
 //Create
-router.post("/", createHotel);
+router.post("/",verifyAdmin, createHotel);
 //update
-router.put("/:id", updateHotel);
+router.put("/:id",verifyAdmin, updateHotel);
 //delete
-router.delete("/:id", deleteHotel);
+router.delete("/:id",verifyAdmin, deleteHotel);
 //GET
 router.get("/:id", getHotel);
 //GETALL
