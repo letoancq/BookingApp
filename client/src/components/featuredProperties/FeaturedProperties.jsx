@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
 import "./featuredProperties.css";
 
@@ -20,7 +21,7 @@ const FeaturedProperties = () => {
               <span className="fpName">{item.name}</span>
               <span className="fpCity">{item.city}</span>
               <span className="fpPrice">
-                Starting from {item.cheapestPrice}
+                Starting from ${item.cheapestPrice}
               </span>
               {item.rating && (
                 <div className="fpRating">
